@@ -22,9 +22,10 @@ services.factory('User', function() {
       return _this.token;
     },
     login: function(useremail, password, callback) {
-      return $.post('/api/v1/tokens.json', 
+      return $.post('/api/v1/tokens.json',
                     { user_login: {email: useremail, password: password} }, 'json').
                     done(function(data){
+                      console.log('authenticated')
                       _this.name = useremail;
                       _this.token = data.token
                       _this.authenticated = true;
@@ -47,15 +48,20 @@ services.factory('User', function() {
         return callback(false);
       }*/
     },
+
+
     signUp: function(useremail, password, passwordConfirmation, callback) {
+
       return $.post('/api/v1/registrations.json',
-                    {user: 
-                      {email: useremail, password: password, password_confirmation: passwordConfirmation} 
+                    {user:
+                      {email: useremail, password: password, password_confirmation: passwordConfirmation}
                     }, 'json').
                     done(function(data){
+                      console.log('done');
 
                     }).
                     fail(function(data){
+                      console.log('fails')
 
                     });
     }

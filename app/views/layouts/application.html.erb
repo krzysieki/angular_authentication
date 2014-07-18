@@ -14,20 +14,20 @@
 
 
 </head>
-<body ng-app="app">	
+<body ng-app="app">
 
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
-        	<div class="container-fluid">				
+        	<div class="container-fluid">
           		<a class="brand" href="#">Angular Authentication</a>
           		<div class="nav-collapse collapse" ng-controller="MainMenuCtrl">
           			<p class="navbar-text pull-right" ng-show="authenticated">
           				Logged in as <a href="#" class="navbar-link" ng-click="signOut()">{{user.name}}</a>
           			</p>
             		<p class="navbar-text pull-right" ng-show="!authenticated">
-            			<a href="#" class="navbar-link" ng-click="openSignUp()">Sign Up</a> 
+            			<a href="#" class="navbar-link" ng-click="openSignUp()">Sign Up</a>
             			or
-            			<a href="#" class="navbar-link" ng-click="openSignIn()">Sign In</a> 
+            			<a href="#" class="navbar-link" ng-click="openSignIn()">Sign In</a>
             		</p>
 		            <ul class="nav">
 		              <li ng-repeat="menu in menus"><a href="{{menu.url}}">{{menu.text}}</a></li>
@@ -58,31 +58,31 @@
 				        <div class="modal-header">
 				            <h4>Sign Up</h4>
 				        </div>
-				        
+
 			            <form class="form-horizontal">
 			            	<div class="modal-body">
 				            	<div class="control-group">
-				            		<input type="text" name="username" placeholder="username or email"/>
+				            		<input type="text" name="username" placeholder="username or email" ng-model="user.useremail"/>
 				            	</div>
 				            	<div class="control-group">
-				            		<input type="password" name="password" placeholder="password"/>
+				            		<input type="password" name="password" placeholder="password" ng-model="user.password" />
 				            	</div>
 				            	<div class="control-group">
-				            		<input type="password" name="password_confirmation" placeholder="password"/>
+				            		<input type="password" name="password_confirmation" placeholder="password" ng-model="user.passwordConfirmation"/>
 				            	</div>
 				            </div>
 				            <div class="modal-footer">
 					            <button class="btn" ng-click="closeSignUp()">Close</button>
 					            <button class="btn btn-primary" ng-click="signUp()">Sign Up</button>
-					        </div>	
+					        </div>
 			            </form>
 				    </div>
 
           		</div><!--/.nav-collapse -->
         	</div>
-      	</div>      	
-    </div>    
-	
+      	</div>
+    </div>
+
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span3">
@@ -97,7 +97,7 @@
 				<%= yield %>
 			</div>
 		</div>
-	</div>    
+	</div>
 
 </body>
 </html>

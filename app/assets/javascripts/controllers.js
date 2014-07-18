@@ -1,13 +1,13 @@
 'use strict';
 
 /* Controllers */
-function HomeCtrl($scope) {	
+function HomeCtrl($scope) {
 	$scope.message = "Hello!";
 }
 HomeCtrl.$inject = ['$scope'];
 
 function MainMenuCtrl($scope, User) {
-	$scope.menus = [{url: '/#/home', text: 'Home'}];	
+	$scope.menus = [{url: '/#/home', text: 'Home'}];
 	$scope.authenticated = User.isAuthenticated();
 	$scope.user = {useremail: '', password:'', passwordConfirmation: ''};
 
@@ -16,12 +16,12 @@ function MainMenuCtrl($scope, User) {
     $scope.signUpShouldBeOpen = false;
 	};
 
-	$scope.closeSignIn = function () {	    
+	$scope.closeSignIn = function () {
     $scope.signInShouldBeOpen = false;
-    $scope.errorMessage = null;	    
+    $scope.errorMessage = null;
 	};
 
-	$scope.signIn = function () {	    
+	$scope.signIn = function () {
     User.login($scope.user.useremail, $scope.user.password, function(response) {
 	  	$scope.errorMessage = response.message;
 	  	$scope.$apply(); //I don't know why the change is not being emmited to the view
@@ -33,13 +33,14 @@ function MainMenuCtrl($scope, User) {
     $scope.signInShouldBeOpen = false;
 	};
 
-	$scope.closeSignUp = function () {	    
+	$scope.closeSignUp = function () {
     $scope.signUpShouldBeOpen = false;
-    $scope.errorMessage = null;	    
+    $scope.errorMessage = null;
 	};
 
-	$scope.signUp = function () {	    
-    User.signUp($scope.user.useremail, $scope.user.password, function(response) {
+	$scope.signUp = function () {
+    console.log($scope.user)
+    User.signUp($scope.user.useremail, $scope.user.password, $scope.user.passwordConfirmation, function(response) {
 	  	$scope.errorMessage = response.message;
 	  	$scope.$apply(); //I don't know why the change is not being emmited to the view
 		});

@@ -13,4 +13,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	//$locationProvider.html5Mode(true);
 	$routeProvider.when('/home', {templateUrl: '/partials/home.html', controller: HomeCtrl});
     $routeProvider.otherwise({redirectTo: '/home'});
+
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+
 }]);
